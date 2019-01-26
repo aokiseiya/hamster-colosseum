@@ -9,7 +9,7 @@
 custom_solver_bias = 0.0
 extents = Vector2( 10, 10 )
 
-[node name="Hamster" index="0" instance=ExtResource( 1 )]
+[node name="Hamster" instance=ExtResource( 1 )]
 
 position = Vector2( 44.3345, 45.9408 )
 script = ExtResource( 2 )

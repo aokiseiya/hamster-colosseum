@@ -11,7 +11,7 @@ config_version=3
 [application]
 
 config/name="Hamster Colosseum"
-run/main_scene="res://scenes/Hamster.tscn"
+run/main_scene="res://scenes/Gameplay.tscn"
 config/icon="res://icon.png"
 
 [display]

@@ -24,5 +24,6 @@ func _physics_process(delta):
 	p2.up_down = Input.is_action_pressed("p2_up")
 	p2.down_down = Input.is_action_pressed("p2_down")
 	p2.left_down = Input.is_action_pressed("p2_left")
+	p2.right_down = Input.is_action_pressed("p2_right")
 	p2.shift_down = Input.is_action_pressed("p2_shift")
 	
