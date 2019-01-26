@@ -2,8 +2,11 @@ extends KinematicBody2D
 
 # class member variables go here, for example:
 var damage = 0
+var disabled_timer
 
-onready var disabled_timer = get_node("Disabled")
+func _ready():
+	disabled_timer = get_node("Disabled")
+	disabled_timer.set_wait_time(1)
 
 export var walk_speed = 0
 
@@ -20,7 +23,6 @@ func get_input():
 	down_down = false
 	left_down = false
 	right_down = false
-	right_down = false
 	shift_down = false
 	if Input.is_action_pressed("ui_left"):
 		left_down = true
@@ -30,8 +32,9 @@ func get_input():
 		up_down = true
 	if Input.is_action_pressed("ui_down"):
 		down_down = true
-	if Input.is_action_pressed("ui_tempshift"):
+	if Input.is_action_just_pressed("ui_tempshift"):
 		shift_down = true
+		print("down")
 	
 
 func get_normalized_velocity():
@@ -45,18 +48,9 @@ func get_normalized_velocity():
 		if left_down:
 			velocity.x -= 1
 		if right_down:
-			print("rightdown")
 			velocity.x += 1
 	return velocity.normalized()
 
-#implement movement
-
-#implement what happens after you get hit
-
-func _ready():
-	# Called when the node is added to the scene for the first time.
-	# Initialization here
-	pass
 
 func damage(amount):
 	damage += amount
