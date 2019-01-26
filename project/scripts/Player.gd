@@ -18,27 +18,27 @@ var shift_down = false
 var hit = false
 var velocity
 
-func get_input():
-	up_down = false
-	down_down = false
-	left_down = false
-	right_down = false
-	shift_down = false
-	if Input.is_action_pressed("ui_left"):
-		left_down = true
-	if Input.is_action_pressed("ui_right"):
-		right_down = true
-	if Input.is_action_pressed("ui_up"):
-		up_down = true
-	if Input.is_action_pressed("ui_down"):
-		down_down = true
-	if Input.is_action_just_pressed("ui_tempshift"):
-		shift_down = true
-		print("down")
+#func get_input():
+#	up_down = false
+#	down_down = false
+#	left_down = false
+#	right_down = false
+#	shift_down = false
+#	if Input.is_action_pressed("ui_left"):
+#		left_down = true
+#	if Input.is_action_pressed("ui_right"):
+#		right_down = true
+#	if Input.is_action_pressed("ui_up"):
+#		up_down = true
+#	if Input.is_action_pressed("ui_down"):
+#		down_down = true
+#	if Input.is_action_just_pressed("ui_tempshift"):
+#		shift_down = true
+#		print("down")
 	
 
 func get_normalized_velocity():
-	get_input()
+#	get_input()
 	velocity = Vector2()
 	if disabled_timer.is_stopped():
 		if up_down:
