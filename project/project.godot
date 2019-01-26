@@ -10,7 +10,7 @@ config_version=3
 
 [application]
 
-config/name="Super Smash Hamsters"
+config/name="Hamster Colosseum"
 config/icon="res://icon.png"
 
 [rendering]
