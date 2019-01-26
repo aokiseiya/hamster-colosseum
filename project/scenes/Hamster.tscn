@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scripts/Hamster.gd" type="Script" id=1]
+
+[node name="Hamster" type="KinematicBody2D" index="0"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+collision/safe_margin = 0.08
+script = ExtResource( 1 )
+walk_speed = 0
+dash_speed = 0
+
+[node name="Disabled" type="Timer" parent="." index="0"]
+
+process_mode = 0
+wait_time = 1.0
+one_shot = false
+autostart = false
+
+
