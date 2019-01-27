@@ -5,14 +5,14 @@ onready var p2_HP_label = $HBoxContainer/Bars/P2HPBar/Count/Background/Number/
 onready var p1_life_label = $HBoxContainer/Bars/P1LifeBar/Count/Background/Number/
 onready var p2_life_label = $HBoxContainer/Bars/P2LifeBar/Count/Background/Number/
 
-var initial_health = "0"
-var initial_life   = "3"
+#var initial_health = "0"
+#var initial_life = GAME_CONFIG.max_lives
 
-func _ready():
-	p1_HP_label.text = initial_health
-	p2_HP_label.text = initial_health
-	p1_life_label.text = initial_life
-	p2_life_label.text = initial_life
+#func _ready():
+#	p1_HP_label.text = initial_health
+#	p2_HP_label.text = initial_health
+#	p1_life_label.text = initial_life
+#	p2_life_label.text = initial_life
 
 #Testing
 #func _process(delta):

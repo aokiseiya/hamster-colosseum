@@ -9,6 +9,7 @@ onready var p2 = get_node("P2")
 onready var stage = get_node("FinalCage")
 onready var respawn_audio = get_node("RespawnSFX")
 onready var death_audio = get_node("DeathSFX")
+onready var ui = get_node("UI")
 
 func _ready():
 	p1.lives = GAME_CONFIG.max_lives
@@ -19,7 +20,7 @@ func _ready():
 	p1.connect("death", self, "player_died")
 	p2.connect("death", self, "player_died")
 
-func _physics_process(delta):
+func _process(delta):
 #	# Called every frame. Delta is time since last frame.
 #	# Update game logic here.
 	# Get input
@@ -36,6 +37,13 @@ func _physics_process(delta):
 	p2.shift_down = Input.is_action_pressed("p2_shift")
 	p2.attack_down = Input.is_action_pressed("p2_attack")
 
+	ui.p1_update_health(p1.damage)	
+	ui.p2_update_health(p2.damage)
+	ui.p1_update_life(p1.lives)
+	ui.p2_update_life(p2.lives)
+	
+	
+
 func player_died(player):
 	player.lives -= 1
 	if (player.lives > 0):
@@ -43,4 +51,7 @@ func player_died(player):
 		player.respawn(player.spawn)
 	else:
 		death_audio.play()
-		print(player.get_name() + " lost!")
+		if(player.get_name() == "P1"):
+			get_tree().change_scene("res://scenes/GameOverP1.tscn")
+		else:
+			get_tree().change_scene("res://scenes/GameOverP2.tscn")
