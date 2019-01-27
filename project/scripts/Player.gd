@@ -20,6 +20,7 @@ var shift_down = false
 var is_attacking = false
 var attack_damage = 10
 var velocity
+var lives
 
 var moving_right = false
 
