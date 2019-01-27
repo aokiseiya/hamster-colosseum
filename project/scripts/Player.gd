@@ -55,3 +55,5 @@ func get_normalized_velocity():
 func damage(amount):
 	damage += amount
 
+func killed():
+	print("Ded")
