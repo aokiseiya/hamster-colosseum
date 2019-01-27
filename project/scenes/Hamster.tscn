@@ -26,7 +26,7 @@ collision_mask = 16384
 script = ExtResource( 2 )
 _sections_unfolded = [ "Collision", "Material", "Visibility", "collision" ]
 walk_speed = 100
-dash_speed = 150
+dash_speed = 400
 
 [node name="Sprite" parent="." index="1" instance=ExtResource( 3 )]
 
@@ -35,7 +35,7 @@ _sections_unfolded = [ "Animation", "Offset", "Transform" ]
 [node name="Dash" type="Timer" parent="." index="2"]
 
 process_mode = 1
-wait_time = 1.0
+wait_time = 0.2
 one_shot = false
 autostart = false
 
@@ -73,7 +73,7 @@ position = Vector2( -25, 0 )
 [node name="HamsterRight" parent="CollisionBoxes" index="3" instance=ExtResource( 6 )]
 
 position = Vector2( 25, 0 )
-_sections_unfolded = [ "Material", "Pause" ]
+_sections_unfolded = [ "Collision", "Material", "Pause", "Pickable", "Transform", "Visibility", "Z Index" ]
 
 [node name="HamsterUp" parent="CollisionBoxes" index="4" instance=ExtResource( 7 )]
 
@@ -82,5 +82,7 @@ position = Vector2( 0, -26 )
 [connection signal="timeout" from="Dash" to="." method="_on_Dash_timeout"]
 
 [connection signal="timeout" from="DashCooldown" to="." method="_on_DashCooldown_timeout"]
+
+[connection signal="timeout" from="AttackTimer" to="." method="_on_AttackTimer_timeout"]
 
 

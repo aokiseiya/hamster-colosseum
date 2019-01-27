@@ -192,12 +192,12 @@ tracks/0/keys = {
 "values": [ 45, 49 ]
 }
 
-[node name="Sprite" type="Sprite" index="0"]
+[node name="Sprite" type="Sprite"]
 
 texture = ExtResource( 1 )
 vframes = 10
 hframes = 5
-frame = 49
+frame = 5
 _sections_unfolded = [ "Animation" ]
 
 [node name="Anim" type="AnimationPlayer" parent="." index="0"]

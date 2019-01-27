@@ -42,8 +42,13 @@ audio_bus_override = false
 audio_bus_name = "Master"
 _sections_unfolded = [ "Transform" ]
 
-[connection signal="timeout" from="Invul" to="." method="_on_Invul_timeout"]
+[node name="AttackTimer" type="Timer" parent="." index="3"]
 
-[connection signal="area_entered" from="CollisionBoxes/HitBox" to="." method="_on_HitBox_area_entered"]
+process_mode = 1
+wait_time = 1.0
+one_shot = false
+autostart = false
+
+[connection signal="timeout" from="Disabled" to="." method="_on_Disabled_timeout"]
 
 
