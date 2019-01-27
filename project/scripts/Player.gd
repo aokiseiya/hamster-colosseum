@@ -4,17 +4,20 @@ extends KinematicBody2D
 signal death(player)
 var damage = 0
 onready var disabled_timer = get_node("Disabled")
+onready var invul_blink_timer = get_node("InvulBlink")
 var invul_timer
 var lives = 0
 var spawn = Vector2(0,0)
 var knockback_remaining = 0
-
+var is_translucent = false
 var dir_facing = Vector2(1,0)
 
 func _ready():
 	pass
 
 export var walk_speed = 0
+var attacking = false
+var attack_animation_played = false
 
 var up_down = false
 var down_down = false
@@ -67,6 +70,7 @@ func init(pos):
 	damage = 0
 	dir_facing = Vector2(1,0)
 	position = pos
+	knockback_remaining = 0
 
 func respawn(pos):
 	init(pos)
@@ -76,6 +80,8 @@ func respawn(pos):
 
 func _on_Invul_timeout():
 	invulnerable = false
+	print("stopped")
+	is_translucent = false
 	invul_timer.stop()
 
 func killed():
@@ -91,3 +97,11 @@ func _on_Disabled_timeout():
 	disabled = false
 	disabled_timer.stop()
 	
+
+
+func _on_InvulBlink_timeout():
+	if invulnerable:
+		if is_translucent:
+			is_translucent=false
+		else:
+			is_translucent = true

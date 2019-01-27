@@ -49,6 +49,17 @@ wait_time = 1.0
 one_shot = false
 autostart = false
 
+[node name="InvulBlink" type="Timer" parent="." index="4"]
+
+process_mode = 1
+wait_time = 0.3
+one_shot = false
+autostart = true
+
 [connection signal="timeout" from="Disabled" to="." method="_on_Disabled_timeout"]
+
+[connection signal="timeout" from="Invul" to="." method="_on_Invul_timeout"]
+
+[connection signal="timeout" from="InvulBlink" to="." method="_on_InvulBlink_timeout"]
 
 

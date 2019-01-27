@@ -13,6 +13,7 @@ func _ready():
 	p2.lives = GAME_CONFIG.max_lives
 	p1.spawn = stage.get_node("P1SpawnPos").position
 	p2.spawn = stage.get_node("P2SpawnPos").position
+	p2.make_invulnerable(1)
 	p1.connect("death", self, "player_died")
 	p2.connect("death", self, "player_died")
 
