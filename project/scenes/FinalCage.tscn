@@ -17,6 +17,7 @@ extents = Vector2( 10, 110 )
 
 [node name="Sprite" type="Sprite" parent="." index="0"]
 
+position = Vector2( 2.14935, 3 )
 texture = ExtResource( 2 )
 centered = false
 _sections_unfolded = [ "Offset" ]

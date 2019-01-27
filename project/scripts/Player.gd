@@ -4,6 +4,8 @@ extends KinematicBody2D
 var damage = 0
 var disabled_timer
 
+var dir_facing = Vector2(1,0)
+
 func _ready():
 	disabled_timer = get_node("Disabled")
 	disabled_timer.set_wait_time(1)
@@ -15,8 +17,11 @@ var down_down = false
 var left_down = false
 var right_down = false
 var shift_down = false
-var hit = false
+var is_attacking = false
+var attack_damage = 10
 var velocity
+
+var moving_right = false
 
 #func get_input():
 #	up_down = false
@@ -49,11 +54,63 @@ func get_normalized_velocity():
 			velocity.x -= 1
 		if right_down:
 			velocity.x += 1
+			
 	return velocity.normalized()
-
 
 func damage(amount):
 	damage += amount
 
-func killed():
-	print("Ded")
+func is_self_box(area):
+	for box in get_node("CollisionBoxes").get_children():
+		if area == box:
+			return true
+	return false
+
+func onHit(area, dmg, dir):
+	if !is_self_box(area) && is_hit_box(area):
+		emit_signal("attacked", self)
+		emit_signal ("attacking", area.get_parent().get_parent(), dmg, dir)
+		print("collided")
+
+func is_hit_box(area):
+	for hitbox in get_tree().get_nodes_in_group("hit_box"):
+		if area == hitbox:
+			return true
+	return false
+
+
+
+
+#func _on_HurtBoxUp_area_entered(area):
+#	onHit(area, attack_damage, Vector2(0,1))
+#
+#
+#func _on_HurtBoxDown_area_entered(area):
+#	onHit(area, attack_damage, Vector2(0,-1))
+#
+#
+#func _on_HurtBoxRight_area_entered(area):
+#	onHit(area, attack_damage, Vector2(-1,0))
+#
+#
+#func _on_HurtBoxLeft_area_entered(area):
+#	onHit(area, attack_damage, Vector2(1,0))
+#
+#
+#func _on_Player_attacking(area, dmg, dir):
+#	pass # replace with function body
+#
+#
+#func _on_Player_attacked(area):
+#	pass # replace with function body
+
+#var is_attacking = false
+#$HamsterUp.disabled = true
+#$HamsterDown.disabled = true
+#etc.
+# 
+
+func _on_HitBox_area_entered(area):
+	if area.is_in_group("attacks") && !is_self_box(area):
+		#$area.disabled = false
+		print(area.dir)
