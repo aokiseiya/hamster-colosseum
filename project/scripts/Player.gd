@@ -66,12 +66,6 @@ func is_self_box(area):
 			return true
 	return false
 
-func onHit(area, dmg, dir):
-	if !is_self_box(area) && is_hit_box(area):
-		emit_signal("attacked", self)
-		emit_signal ("attacking", area.get_parent().get_parent(), dmg, dir)
-		print("collided")
-
 func is_hit_box(area):
 	for hitbox in get_tree().get_nodes_in_group("hit_box"):
 		if area == hitbox:

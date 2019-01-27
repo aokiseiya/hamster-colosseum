@@ -22,8 +22,8 @@ autostart = false
 [node name="CollisionBoxes" type="Node2D" parent="." index="1"]
 
 [node name="HitBox" type="Area2D" parent="CollisionBoxes" index="0" groups=[
-"hit_box",
 "self_boxes",
+"hit_box",
 ]]
 
 input_pickable = true
@@ -34,10 +34,6 @@ angular_damp = 1.0
 audio_bus_override = false
 audio_bus_name = "Master"
 _sections_unfolded = [ "Transform" ]
-
-[connection signal="attacked" from="." to="." method="_on_Player_attacked"]
-
-[connection signal="attacking" from="." to="." method="_on_Player_attacking"]
 
 [connection signal="area_entered" from="CollisionBoxes/HitBox" to="." method="_on_HitBox_area_entered"]
 
