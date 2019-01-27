@@ -8,13 +8,17 @@ var dash_timer
 var dashCooldown_timer
 var isDashing
 onready var sprite = get_node("Sprite/Anim")
+enum {LEFT, RIGHT}
+var idling = true
 
+var facing = RIGHT
 
 func _ready():
 	dash_timer = get_node("Dash")
 	dash_timer.set_wait_time(0.5)
 	dashCooldown_timer = get_node("DashCooldown")
 	dashCooldown_timer.set_wait_time(1)	
+	sprite.play("right-idle")
 
 func _physics_process(delta):
 	isDashing = false
@@ -31,15 +35,33 @@ func _physics_process(delta):
 
 func animate():
 	if disabled_timer.is_stopped():
-		if (velocity.x == 0 && velocity.y == 0) && dir_facing != Vector2(0,0):
-			dir_facing = Vector2(0,0)
-			sprite.play("right-idle")
-		elif left_down && dir_facing != Vector2(-1,0):
+		var initial_idle = idling
+		var initial_facing = facing
+		idling = false
+		if left_down:
 			dir_facing = Vector2(-1,0)
-			sprite.play("left-walk")
-		elif right_down && dir_facing != Vector2(1,0):
+			facing = LEFT
+		elif right_down:
 			dir_facing = Vector2(1,0)
-			sprite.play("right-walk")
+			facing = RIGHT
+		elif up_down:
+			dir_facing = Vector2(0,-1)
+		elif down_down:
+			dir_facing = Vector2(0,1)
+		else:
+			idling = true
+		if idling && !initial_idle:
+			if facing == LEFT:
+				sprite.play("left-idle")
+			elif facing == RIGHT:
+				sprite.play("right-idle")
+		elif !idling && initial_idle || initial_facing != facing:
+			if facing == LEFT:
+				sprite.play("left-walk")
+			elif facing == RIGHT:
+				sprite.play("right-walk")
+		
+		
 		
 
 
