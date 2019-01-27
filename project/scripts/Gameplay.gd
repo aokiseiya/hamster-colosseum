@@ -6,9 +6,13 @@ extends Node2D
 
 onready var p1 = get_node("P1")
 onready var p2 = get_node("P2")
+onready var stage = get_node("FinalCage")
+onready var p1_spawn_pos = stage.get_node("P1SpawnPos")
+onready var p_spawn_pos = stage.get_node("P2SpawnPos")
 
 func _ready():
-	pass
+	p1.lives = GAME_CONFIG.max_lives
+	p2.lives = GAME_CONFIG.max_lives
 
 func _physics_process(delta):
 #	# Called every frame. Delta is time since last frame.
@@ -24,4 +28,8 @@ func _physics_process(delta):
 	p2.left_down = Input.is_action_pressed("p2_left")
 	p2.right_down = Input.is_action_pressed("p2_right")
 	p2.shift_down = Input.is_action_pressed("p2_shift")
-	
+
+func player_died(player):
+	if (player.lives > 0):
+		player.respawn(player.spawn_pos)
+	print(player.get_name() + " lost!")

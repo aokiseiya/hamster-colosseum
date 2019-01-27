@@ -43,7 +43,6 @@ func animate():
 		
 
 
-
 func _on_Disabled_timeout():
     disabled_timer.stop()
 
