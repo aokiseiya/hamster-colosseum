@@ -9,6 +9,7 @@ collision_layer = 1
 collision_mask = 1
 collision/safe_margin = 0.08
 script = ExtResource( 1 )
+_sections_unfolded = [ "Material", "Visibility" ]
 walk_speed = 0
 
 [node name="Disabled" type="Timer" parent="." index="0"]
@@ -17,5 +18,27 @@ process_mode = 0
 wait_time = 1.0
 one_shot = false
 autostart = false
+
+[node name="CollisionBoxes" type="Node2D" parent="." index="1"]
+
+[node name="HitBox" type="Area2D" parent="CollisionBoxes" index="0" groups=[
+"hit_box",
+"self_boxes",
+]]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+_sections_unfolded = [ "Transform" ]
+
+[connection signal="attacked" from="." to="." method="_on_Player_attacked"]
+
+[connection signal="attacking" from="." to="." method="_on_Player_attacking"]
+
+[connection signal="area_entered" from="CollisionBoxes/HitBox" to="." method="_on_HitBox_area_entered"]
 
 

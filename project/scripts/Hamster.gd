@@ -46,10 +46,10 @@ func animate():
 
 func _on_Disabled_timeout():
     disabled_timer.stop()
-	
+
 func _on_Dash_timeout():
 	dash_timer.stop()
 	dashCooldown_timer.start()
-	
+
 func _on_DashCooldown_timeout():
 	dashCooldown_timer.stop()
