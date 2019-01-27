@@ -8,8 +8,6 @@ onready var p1 = get_node("P1")
 onready var p2 = get_node("P2")
 
 func _ready():
-	# Called when the node is added to the scene for the first time.
-	# Initialization here
 	pass
 
 func _physics_process(delta):
