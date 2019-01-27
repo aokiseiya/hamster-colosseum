@@ -8,25 +8,22 @@
 [ext_resource path="res://scenes/Attacks/HamsterRight.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/Attacks/HamsterUp.tscn" type="PackedScene" id=7]
 
-[sub_resource type="RectangleShape2D" id=1]
-
-custom_solver_bias = 0.0
-extents = Vector2( 15.3222, 16.097 )
-
 [sub_resource type="RectangleShape2D" id=2]
 
 custom_solver_bias = 0.0
 extents = Vector2( 10, 10 )
 
-[node name="Hamster" instance=ExtResource( 1 )]
+[sub_resource type="RectangleShape2D" id=3]
+
+custom_solver_bias = 0.0
+extents = Vector2( 16, 16 )
+
+[node name="Hamster" index="0" instance=ExtResource( 1 )]
 
 position = Vector2( 44.3345, 45.9408 )
-collision_layer = 16384
-collision_mask = 16384
 script = ExtResource( 2 )
-_sections_unfolded = [ "Collision", "Material", "Visibility", "collision" ]
-walk_speed = 100
-dash_speed = 150
+walk_speed = 150
+dash_speed = 500
 
 [node name="Sprite" parent="." index="1" instance=ExtResource( 3 )]
 
@@ -46,11 +43,6 @@ wait_time = 1.0
 one_shot = false
 autostart = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="4"]
-
-shape = SubResource( 1 )
-_sections_unfolded = [ "Visibility" ]
-
 [node name="HitBox" parent="CollisionBoxes" index="0"]
 
 editor/display_folded = true
@@ -65,19 +57,27 @@ _sections_unfolded = [ "Transform" ]
 [node name="HamsterDown" parent="CollisionBoxes" index="1" instance=ExtResource( 4 )]
 
 position = Vector2( 0, 24 )
+knockback = 0
 
 [node name="HamsterLeft" parent="CollisionBoxes" index="2" instance=ExtResource( 5 )]
 
 position = Vector2( -25, 0 )
+knockback = 0
 
 [node name="HamsterRight" parent="CollisionBoxes" index="3" instance=ExtResource( 6 )]
 
 position = Vector2( 25, 0 )
 _sections_unfolded = [ "Material", "Pause" ]
+knockback = 0
 
 [node name="HamsterUp" parent="CollisionBoxes" index="4" instance=ExtResource( 7 )]
 
 position = Vector2( 0, -26 )
+knockback = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="6"]
+
+shape = SubResource( 3 )
 
 [connection signal="timeout" from="Dash" to="." method="_on_Dash_timeout"]
 
