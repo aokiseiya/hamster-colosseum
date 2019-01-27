@@ -192,7 +192,7 @@ tracks/0/keys = {
 "values": [ 45, 49 ]
 }
 
-[node name="Sprite" type="Sprite" index="0"]
+[node name="Sprite" type="Sprite"]
 
 texture = ExtResource( 1 )
 vframes = 10
