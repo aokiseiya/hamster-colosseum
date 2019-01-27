@@ -16,5 +16,10 @@ func _ready():
 
 
 func _on_BlastZone_body_entered(body):
+	print("dead")
 	if body.has_method("killed"):
 		body.killed()
+
+
+func _on_BlastZone_area_entered(area):
+	print(area)

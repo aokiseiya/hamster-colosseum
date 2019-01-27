@@ -1,11 +1,12 @@
 extends KinematicBody2D
 
 # class member variables go here, for example:
+signal death(player)
 var damage = 0
 onready var disabled_timer = get_node("Disabled")
 var invul_timer
 var lives = 0
-var spawn_pos = Vector2(0,0)
+var spawn = Vector2(0,0)
 var knockback_remaining = 0
 
 var dir_facing = Vector2(1,0)
@@ -76,21 +77,25 @@ func make_invulnerable(time):
 	invul_timer.start()
 	invulnerable = true
 	
-func init():
+func init(pos):
 	damage = 0
 	dir_facing = Vector2(1,0)
-	
+	position = pos
 
-func respawn():
-	init()
+func respawn(pos):
+	init(pos)
 	make_invulnerable(2)
-	ready()
+	_ready()
 	
 
 func _on_Invul_timeout():
 	invulnerable = false
 	invul_timer.stop()
 
+func killed():
+	print("so gafgsrfv")
+	emit_signal("death", self)
+	
 func knockedback(amount, dir):
 	velocity = dir * GAME_CONFIG.knockback_speed
 	knockback_remaining = amount
