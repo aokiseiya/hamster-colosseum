@@ -4,8 +4,7 @@ extends KinematicBody2D
 var damage = 0
 var disabled_timer
 
-signal attacking(area, dmg, dir)
-signal attacked(area)
+var dir_facing = Vector2(1,0)
 
 func _ready():
 	disabled_timer = get_node("Disabled")
@@ -21,6 +20,8 @@ var shift_down = false
 var is_attacking = false
 var attack_damage = 10
 var velocity
+
+var moving_right = false
 
 #func get_input():
 #	up_down = false
@@ -53,6 +54,7 @@ func get_normalized_velocity():
 			velocity.x -= 1
 		if right_down:
 			velocity.x += 1
+			
 	return velocity.normalized()
 
 func damage(amount):
