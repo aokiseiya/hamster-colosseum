@@ -5,9 +5,9 @@
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
-extents = Vector2( 10, 10 )
+extents = Vector2( 35, 15 )
 
-[node name="HamsterDown" index="0" instance=ExtResource( 1 )]
+[node name="HamsterDown" instance=ExtResource( 1 )]
 
 dir = Vector2( 0, 1 )
 damage = 15
@@ -16,5 +16,6 @@ knockback = 500
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
 
 shape = SubResource( 1 )
+_sections_unfolded = [ "Transform" ]
 
 

@@ -10,13 +10,14 @@ onready var stage = get_node("FinalCage")
 onready var respawn_audio = get_node("RespawnSFX")
 onready var death_audio = get_node("DeathSFX")
 onready var ui = get_node("UI")
+enum {LEFT, RIGHT}
 
 func _ready():
 	p1.lives = GAME_CONFIG.max_lives
 	p2.lives = GAME_CONFIG.max_lives
 	p1.spawn = stage.get_node("P1SpawnPos").position
 	p2.spawn = stage.get_node("P2SpawnPos").position
-	p2.make_invulnerable(1)
+	p2.dir_facing = Vector2(-1,0)
 	p1.connect("death", self, "player_died")
 	p2.connect("death", self, "player_died")
 

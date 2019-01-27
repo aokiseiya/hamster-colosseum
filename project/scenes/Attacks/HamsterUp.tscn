@@ -5,9 +5,9 @@
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
-extents = Vector2( 10, 10 )
+extents = Vector2( 35, 15 )
 
-[node name="HamsterUp" index="0" instance=ExtResource( 1 )]
+[node name="HamsterUp" instance=ExtResource( 1 )]
 
 dir = Vector2( 0, -1 )
 damage = 10

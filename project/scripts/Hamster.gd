@@ -9,6 +9,7 @@ var dashCooldown_timer
 var isDashing
 onready var sprite = get_node("Sprite/Anim")
 onready var attack_timer = get_node("AttackTimer")
+onready var attack_cd = get_node("AttackCooldown")
 enum {LEFT, RIGHT}
 var idling = true
 
@@ -116,7 +117,7 @@ func animate_movement():
 		
 		
 func attack():
-	if !disabled && attack_timer.is_stopped():
+	if !disabled && attack_timer.is_stopped() &&  attack_cd.is_stopped():
 		disable_for(0.5)
 		attacking = true
 		match dir_facing:
@@ -154,9 +155,11 @@ func toggle_hurtboxes(boo):
 	down_hurt_box.monitorable = boo
 
 func _on_AttackTimer_timeout():
+	attack_cd.start()
 	attacking = false
 	attack_animation_played = false
 	attack_timer.stop()
 	toggle_hurtboxes(false)
 
-
+func _on_AttackCooldown_timeout():
+	attack_cd.stop()

@@ -12,19 +12,19 @@
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
-extents = Vector2( 10, 10 )
+extents = Vector2( 55.6655, 55.9408 )
 
 [sub_resource type="RectangleShape2D" id=2]
 
 custom_solver_bias = 0.0
-extents = Vector2( 16, 16 )
+extents = Vector2( 40, 50 )
 
 [node name="Hamster" instance=ExtResource( 1 )]
 
 position = Vector2( 44.3345, 45.9408 )
 script = ExtResource( 2 )
-walk_speed = 100
-dash_speed = 400
+walk_speed = 250
+dash_speed = 350
 
 [node name="Sprite" parent="." index="1" instance=ExtResource( 3 )]
 
@@ -44,48 +44,41 @@ wait_time = 1.0
 one_shot = false
 autostart = false
 
-[node name="CollisionBoxes" parent="." index="5"]
-
-editor/display_folded = true
-
 [node name="HitBox" parent="CollisionBoxes" index="0"]
 
-editor/display_folded = true
 _sections_unfolded = [ "Collision", "Transform" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionBoxes/HitBox" index="0"]
 
-scale = Vector2( 1.5, 1.5 )
 shape = SubResource( 1 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="HamsterDown" parent="CollisionBoxes" index="1" instance=ExtResource( 4 )]
 
-position = Vector2( 0, 24 )
+position = Vector2( 5.6655, 64.0592 )
 
 [node name="HamsterLeft" parent="CollisionBoxes" index="2" instance=ExtResource( 5 )]
 
-position = Vector2( -24.3345, 1.0592 )
+position = Vector2( -54.3345, 4.0592 )
 monitoring = false
 monitorable = false
+_sections_unfolded = [ "Collision", "Material", "Pause", "Transform", "Visibility", "Z Index" ]
 
 [node name="HamsterRight" parent="CollisionBoxes" index="3" instance=ExtResource( 6 )]
 
-position = Vector2( 25, 0 )
+position = Vector2( 55.6655, 4.0592 )
 _sections_unfolded = [ "Collision", "Material", "Pause", "Pickable", "Transform", "Visibility", "Z Index" ]
 
 [node name="HamsterUp" parent="CollisionBoxes" index="4" instance=ExtResource( 7 )]
 
-position = Vector2( 0, -26 )
+position = Vector2( 5.6655, -65.9408 )
 damage = 15
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="6"]
 
+position = Vector2( 5.6655, 4.0592 )
 shape = SubResource( 2 )
-
-[node name="AttackTimer" parent="." index="7"]
-
-wait_time = 0.3
+_sections_unfolded = [ "Transform" ]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="7"]
 
@@ -96,10 +89,23 @@ autoplay = false
 mix_target = 0
 bus = "Master"
 
+[node name="AttackTimer" parent="." index="8"]
+
+wait_time = 0.3
+
+[node name="AttackCooldown" type="Timer" parent="." index="10"]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = false
+autostart = false
+
 [connection signal="timeout" from="Dash" to="." method="_on_Dash_timeout"]
 
 [connection signal="timeout" from="DashCooldown" to="." method="_on_DashCooldown_timeout"]
 
 [connection signal="timeout" from="AttackTimer" to="." method="_on_AttackTimer_timeout"]
+
+[connection signal="timeout" from="AttackCooldown" to="." method="_on_AttackCooldown_timeout"]
 
 
