@@ -19,11 +19,18 @@ wait_time = 1.0
 one_shot = false
 autostart = false
 
-[node name="CollisionBoxes" type="Node2D" parent="." index="1"]
+[node name="Invul" type="Timer" parent="." index="1"]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = false
+autostart = false
+
+[node name="CollisionBoxes" type="Node2D" parent="." index="2"]
 
 [node name="HitBox" type="Area2D" parent="CollisionBoxes" index="0" groups=[
-"self_boxes",
 "hit_box",
+"self_boxes",
 ]]
 
 input_pickable = true
@@ -34,6 +41,8 @@ angular_damp = 1.0
 audio_bus_override = false
 audio_bus_name = "Master"
 _sections_unfolded = [ "Transform" ]
+
+[connection signal="timeout" from="Invul" to="." method="_on_Invul_timeout"]
 
 [connection signal="area_entered" from="CollisionBoxes/HitBox" to="." method="_on_HitBox_area_entered"]
 

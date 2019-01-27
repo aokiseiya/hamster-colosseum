@@ -3,6 +3,9 @@ extends KinematicBody2D
 # class member variables go here, for example:
 var damage = 0
 var disabled_timer
+var invul_timer
+var lives = 0
+var spawn_pos = Vector2(0,0)
 
 var dir_facing = Vector2(1,0)
 
@@ -21,7 +24,7 @@ var is_attacking = false
 var attack_damage = 10
 var velocity
 
-var moving_right = false
+var invulnerable = false
 
 #func get_input():
 #	up_down = false
@@ -108,3 +111,28 @@ func _on_HitBox_area_entered(area):
 	if area.is_in_group("attacks") && !is_self_box(area):
 		#$area.disabled = false
 		print(area.dir)
+		
+
+func make_invulnerable(time):
+	invul_timer = get_node("Invul")
+	invul_timer.set_wait_time(time)
+	invul_timer.start()
+	invulnerable = true
+	
+func init():
+	damage = 0
+	dir_facing = Vector2(1,0)
+	position = Vector2(400,300) 
+	
+
+func respawn():
+	init()
+	make_invulnerable(2)
+	ready()
+	
+
+func _on_Invul_timeout():
+	invulnerable = false
+	invul_timer.stop()
+	
+
