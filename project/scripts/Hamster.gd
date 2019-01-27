@@ -44,7 +44,6 @@ func check_attacked():
 	for area in hit_box.get_overlapping_areas():
 		if area.is_in_group("attacks") && !is_self_box(area) && knockback_remaining <= 0:
 			damage(area.damage)
-			print(area.knockback)
 			knockedback(area.knockback, area.dir)
 
 func normal_process(delta):
@@ -93,7 +92,6 @@ func animate():
 		
 func attack():
 	if !disabled && attack_timer.is_stopped():
-		print("attacking")
 		disable_for(0.5)
 		match dir_facing:
 			Vector2(1,0):
@@ -106,8 +104,8 @@ func attack():
 				down_hurt_box.monitoring = true
 				down_hurt_box.monitorable = true
 			Vector2(0,-1):
-				down_hurt_box.monitoring = true
-				down_hurt_box.monitorable = true
+				up_hurt_box.monitoring = true
+				up_hurt_box.monitorable = true
 		attack_timer.start()
 				
 
@@ -122,7 +120,7 @@ func _on_DashCooldown_timeout():
 func toggle_hurtboxes(boo):
 	right_hurt_box.monitoring = boo
 	right_hurt_box.monitorable = boo
-	left_hurt_box.monitorable = boo
+	left_hurt_box.monitoring = boo
 	left_hurt_box.monitorable = boo
 	up_hurt_box.monitoring = boo
 	up_hurt_box.monitorable = boo

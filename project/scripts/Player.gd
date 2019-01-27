@@ -93,16 +93,13 @@ func _on_Invul_timeout():
 	invul_timer.stop()
 
 func killed():
-	print("so gafgsrfv")
 	emit_signal("death", self)
 	
 func knockedback(amount, dir):
 	velocity = dir * GAME_CONFIG.knockback_speed
 	knockback_remaining = amount
-	print(knockback_remaining)
 
 func _on_Disabled_timeout():
-	print("stopped")
 	disabled = false
 	disabled_timer.stop()
 	

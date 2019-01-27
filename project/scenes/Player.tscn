@@ -29,8 +29,8 @@ autostart = false
 [node name="CollisionBoxes" type="Node2D" parent="." index="2"]
 
 [node name="HitBox" type="Area2D" parent="CollisionBoxes" index="0" groups=[
-"self_boxes",
 "hit_box",
+"self_boxes",
 ]]
 
 input_pickable = true
