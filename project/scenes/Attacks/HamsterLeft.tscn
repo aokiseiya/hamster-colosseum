@@ -9,9 +9,10 @@ extents = Vector2( 10, 10 )
 
 [node name="HamsterLeft" index="0" instance=ExtResource( 1 )]
 
+_sections_unfolded = [ "Collision" ]
 dir = Vector2( -1, 0 )
-damage = 10
-knockback = 200
+damage = 15
+knockback = 500
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
 

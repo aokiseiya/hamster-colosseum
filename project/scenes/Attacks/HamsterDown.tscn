@@ -10,8 +10,8 @@ extents = Vector2( 10, 10 )
 [node name="HamsterDown" index="0" instance=ExtResource( 1 )]
 
 dir = Vector2( 0, 1 )
-damage = 10
-knockback = 200
+damage = 15
+knockback = 500
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
 

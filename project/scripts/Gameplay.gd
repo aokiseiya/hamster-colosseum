@@ -15,6 +15,7 @@ func _ready():
 	p2.lives = GAME_CONFIG.max_lives
 	p1.spawn = stage.get_node("P1SpawnPos").position
 	p2.spawn = stage.get_node("P2SpawnPos").position
+	p2.make_invulnerable(1)
 	p1.connect("death", self, "player_died")
 	p2.connect("death", self, "player_died")
 
@@ -33,10 +34,9 @@ func _physics_process(delta):
 	p2.left_down = Input.is_action_pressed("p2_left")
 	p2.right_down = Input.is_action_pressed("p2_right")
 	p2.shift_down = Input.is_action_pressed("p2_shift")
-	p2.attack_down = Input.is_action_pressed("p1_attack")
+	p2.attack_down = Input.is_action_pressed("p2_attack")
 
 func player_died(player):
-	print("DEEDDD")
 	player.lives -= 1
 	if (player.lives > 0):
 		respawn_audio.play()

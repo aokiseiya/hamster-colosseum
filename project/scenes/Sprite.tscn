@@ -197,7 +197,7 @@ tracks/0/keys = {
 texture = ExtResource( 1 )
 vframes = 10
 hframes = 5
-frame = 49
+frame = 5
 _sections_unfolded = [ "Animation" ]
 
 [node name="Anim" type="AnimationPlayer" parent="." index="0"]
