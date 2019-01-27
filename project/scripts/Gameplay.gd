@@ -7,6 +7,8 @@ extends Node2D
 onready var p1 = get_node("P1")
 onready var p2 = get_node("P2")
 onready var stage = get_node("FinalCage")
+onready var respawn_audio = get_node("RespawnSFX")
+onready var death_audio = get_node("DeathSFX")
 
 func _ready():
 	p1.lives = GAME_CONFIG.max_lives
@@ -37,6 +39,8 @@ func player_died(player):
 	print("DEEDDD")
 	player.lives -= 1
 	if (player.lives > 0):
+		respawn_audio.play()
 		player.respawn(player.spawn)
 	else:
+		death_audio.play()
 		print(player.get_name() + " lost!")

@@ -60,11 +60,6 @@ func animate():
 				sprite.play("left-walk")
 			elif facing == RIGHT:
 				sprite.play("right-walk")
-		
-		
-		
-
-
 
 func _on_Disabled_timeout():
     disabled_timer.stop()

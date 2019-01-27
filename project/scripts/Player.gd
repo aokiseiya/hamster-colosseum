@@ -11,7 +11,7 @@ var spawn = Vector2(0,0)
 var dir_facing = Vector2(1,0)
 
 func _ready():
-	disabled_timer = get_node("Disabled")
+	disabled_timer = get_node("Disabled")        
 	disabled_timer.set_wait_time(1)
 
 export var walk_speed = 0
@@ -107,6 +107,5 @@ func _on_Invul_timeout():
 	
 
 func killed():
-	print("so gafgsrfv")
 	emit_signal("death", self)
 	
