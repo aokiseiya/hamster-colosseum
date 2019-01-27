@@ -23,7 +23,6 @@ var right_down = false
 var shift_down = false
 var is_attacking = false
 var attack_down = false
-var attack_damage = 10
 var velocity
 
 var disabled = false
@@ -58,19 +57,6 @@ func is_self_box(area):
 			return true
 	return false
 
-func is_hit_box(area):
-	for hitbox in get_tree().get_nodes_in_group("hit_box"):
-		if area == hitbox:
-			return true
-	return false
-
-
-#func _on_HitBox_area_entered(area):
-#	if area.is_in_group("attacks") && !is_self_box(area):
-#		damage(area.damage)
-#		print(area.knockback)
-#		knockedback(area.knockback, area.dir)
-
 func make_invulnerable(time):
 	invul_timer = get_node("Invul")
 	invul_timer.set_wait_time(time)
@@ -97,7 +83,9 @@ func killed():
 	
 func knockedback(amount, dir):
 	velocity = dir * GAME_CONFIG.knockback_speed
-	knockback_remaining = amount
+	print(float(damage) / 100)
+	knockback_remaining = (amount * (float(damage) / 100.0)) + 20
+	print(knockback_remaining)
 
 func _on_Disabled_timeout():
 	disabled = false

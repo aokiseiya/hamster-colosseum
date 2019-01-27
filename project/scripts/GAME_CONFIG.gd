@@ -1,7 +1,7 @@
 extends Node
 
 var max_lives = 3
-var knockback_speed = 400
+var knockback_speed = 600
 
 
 func _ready():

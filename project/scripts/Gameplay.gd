@@ -34,7 +34,6 @@ func _physics_process(delta):
 	p2.attack_down = Input.is_action_pressed("p2_attack")
 
 func player_died(player):
-	print("DEEDDD")
 	player.lives -= 1
 	if (player.lives > 0):
 		player.respawn(player.spawn)

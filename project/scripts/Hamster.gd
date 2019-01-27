@@ -44,6 +44,8 @@ func check_attacked():
 	for area in hit_box.get_overlapping_areas():
 		if area.is_in_group("attacks") && !is_self_box(area) && knockback_remaining <= 0:
 			damage(area.damage)
+			print(area.damage)
+			print(damage)
 			knockedback(area.knockback, area.dir)
 
 func normal_process(delta):

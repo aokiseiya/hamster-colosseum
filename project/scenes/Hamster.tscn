@@ -72,6 +72,7 @@ _sections_unfolded = [ "Collision", "Material", "Pause", "Pickable", "Transform"
 [node name="HamsterUp" parent="CollisionBoxes" index="4" instance=ExtResource( 7 )]
 
 position = Vector2( 0, -26 )
+damage = 15
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="6"]
 
