@@ -21,6 +21,7 @@ var left_down = false
 var right_down = false
 var shift_down = false
 var is_attacking = false
+var attack_down = false
 var attack_damage = 10
 var velocity
 
@@ -76,42 +77,10 @@ func is_hit_box(area):
 	return false
 
 
-
-
-#func _on_HurtBoxUp_area_entered(area):
-#	onHit(area, attack_damage, Vector2(0,1))
-#
-#
-#func _on_HurtBoxDown_area_entered(area):
-#	onHit(area, attack_damage, Vector2(0,-1))
-#
-#
-#func _on_HurtBoxRight_area_entered(area):
-#	onHit(area, attack_damage, Vector2(-1,0))
-#
-#
-#func _on_HurtBoxLeft_area_entered(area):
-#	onHit(area, attack_damage, Vector2(1,0))
-#
-#
-#func _on_Player_attacking(area, dmg, dir):
-#	pass # replace with function body
-#
-#
-#func _on_Player_attacked(area):
-#	pass # replace with function body
-
-#var is_attacking = false
-#$HamsterUp.disabled = true
-#$HamsterDown.disabled = true
-#etc.
-# 
-
 func _on_HitBox_area_entered(area):
 	if area.is_in_group("attacks") && !is_self_box(area):
 		#$area.disabled = false
 		print(area.dir)
-		
 
 func make_invulnerable(time):
 	invul_timer = get_node("Invul")

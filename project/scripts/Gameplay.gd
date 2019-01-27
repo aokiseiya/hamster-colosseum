@@ -23,11 +23,13 @@ func _physics_process(delta):
 	p1.left_down = Input.is_action_pressed("p1_left")
 	p1.right_down = Input.is_action_pressed("p1_right")
 	p1.shift_down = Input.is_action_pressed("p1_shift")
+	p1.attack_down = Input.is_action_pressed("p1_attack")
 	p2.up_down = Input.is_action_pressed("p2_up")
 	p2.down_down = Input.is_action_pressed("p2_down")
 	p2.left_down = Input.is_action_pressed("p2_left")
 	p2.right_down = Input.is_action_pressed("p2_right")
 	p2.shift_down = Input.is_action_pressed("p2_shift")
+	p2.attack_down = Input.is_action_pressed("p1_attack")
 
 func player_died(player):
 	if (player.lives > 0):
